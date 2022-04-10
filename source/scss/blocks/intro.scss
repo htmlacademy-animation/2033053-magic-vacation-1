@@ -115,6 +115,9 @@
 
   p {
     margin: 0;
+    transition: .5s cubic-bezier(.15,.67,.56,.96) .4s;
+    opacity: 0;
+    transform: translateY(30%);
   }
 
   svg {
@@ -131,6 +134,15 @@
     @media (max-width: $mobile) and (orientation: landscape) {
       width: 1.1rem;
       height: 1.1rem;
+    }
+  }
+}
+
+.screen.active {
+  .intro__message {  
+    p {
+      opacity: 1;
+      transform: translateY(0%);
     }
   }
 }

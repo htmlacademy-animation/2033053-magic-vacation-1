@@ -6,9 +6,13 @@
       opacity: 1;
       pointer-events: auto;
     }
+
+    .social-block__link {
+      opacity: 1;
+      transform: translateY(0%);
+    }
   }
 }
-
 .social-block__toggler {
   @include btn-reset;
   position: relative;
@@ -17,6 +21,8 @@
   height: 4rem;
   color: $c-dark;
   border-radius: 50%;
+  transition: .2s;
+  transform: scale(0, 0);
 
   @media (max-width: $tablet) and (orientation: portrait) {
     display: none;
@@ -49,6 +55,7 @@
     color: $c-purple;
 
     &::before {
+      transition: .2s;
       width: 112.5%;
       height: 112.5%;
     }
@@ -86,8 +93,8 @@
   position: absolute;
   top: 100%;
   right: 0;
-  margin-top: 1.5rem;
   opacity: 0;
+  margin-top: 1.5rem;
   pointer-events: none;
 
   @media (min-width: $stop-scaling) {
@@ -168,6 +175,9 @@
   color: $c-light;
   border: 2px solid transparent;
   border-radius: 50%;
+  opacity: 0;
+  transform: translateY(-50%);
+  transition: .15s transform cubic-bezier(.11,.71,.38,1.6), .3s opacity;
 
   @media (min-width: $stop-scaling) {
     width: 40px;
@@ -219,6 +229,7 @@
   }
 
   &--insta {
+    transition-delay: .10s;
     svg {
       width: 1.5rem;
       height: 1.5rem;
@@ -231,6 +242,7 @@
   }
 
   &--vk {
+    transition-delay: .25s;
     svg {
       width: 1.7rem;
       height: 1rem;
@@ -240,5 +252,12 @@
         height: 10px;
       }
     }
+  }
+}
+
+body.loaded {
+  .social-block__toggler {
+    transform: scale(1);
+    transition: .35s cubic-bezier(.32,.87,.35,1.5) .25s;
   }
 }
