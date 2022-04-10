@@ -22,6 +22,7 @@
   color: $c-dark;
   border-radius: 50%;
   transition: .2s;
+  transform: scale(0, 0);
 
   @media (max-width: $tablet) and (orientation: portrait) {
     display: none;
@@ -251,5 +252,12 @@
         height: 10px;
       }
     }
+  }
+}
+
+body.loaded {
+  .social-block__toggler {
+    transform: scale(1);
+    transition: .35s cubic-bezier(.32,.87,.35,1.5) .25s;
   }
 }

@@ -256,7 +256,7 @@
       background-color: $c-light;
       right: 0;
       left: auto;
-      transition: width .2s;
+      transition-duration: .2s;
 
       @media (max-width: $tablet) and (orientation: portrait) {
         left: 0;
@@ -272,9 +272,13 @@
     }
 
     &.active {
+      color: #fff !important;
       &::after {
-        display: block;
+        left: 0;
+        transition-delay: .35s;
+        transition-property: width;
         width: 100%;
+        background-color: #fff !important;
       }
     }
 

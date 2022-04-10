@@ -115,7 +115,7 @@
 
   p {
     margin: 0;
-    transition: .5s cubic-bezier(.15,.67,.56,.96);
+    transition: .5s cubic-bezier(.15,.67,.56,.96) .4s;
     opacity: 0;
     transform: translateY(30%);
   }
