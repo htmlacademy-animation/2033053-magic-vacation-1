@@ -98,7 +98,7 @@
   line-height: 2rem;
   transition: .7s cubic-bezier(.15,.5,.14,1);
   opacity: 0;
-  transform: translateX(40%);
+  transform: translateX(30%);
 
   @media (min-width: $stop-scaling) {
     margin-top: 36px;
