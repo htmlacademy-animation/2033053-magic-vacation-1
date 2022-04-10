@@ -3698,7 +3698,7 @@ img {
   line-height: 2rem;
   transition: 0.7s cubic-bezier(0.15, 0.5, 0.14, 1);
   opacity: 0;
-  transform: translateX(40%);
+  transform: translateX(30%);
 }
 @media (min-width: 2000px) {
   .slider__item-text {
