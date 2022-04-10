@@ -302,7 +302,12 @@
 }
 
 .screen--prizes {
-  background-color: $c-dark;
+  position: relative;
+
+  .prizes {
+    position: relative;
+    z-index: 1;
+  }
 }
 
 .screen--game {
@@ -353,4 +358,31 @@
 
 .screen--rules {
   background-color: $c-dark;
+}
+
+.page-content {
+  position: relative;
+}
+
+.background-cover-screen {
+  transition: all .4s ease;
+  position: absolute;
+  z-index: 1;
+  top: 100%;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 100vw;
+  height: 100vh;
+  background: $c-dark;
+
+  &.show {
+    top: 0;
+  }
+}
+
+body.loaded {
+  .screen__footer {
+    transform: translateY(0%);
+  }
 }
