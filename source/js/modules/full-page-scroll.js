@@ -17,7 +17,6 @@ export default class FullPageScroll {
   init() {
     document.addEventListener(`wheel`, throttle(this.onScrollHandler, this.THROTTLE_TIMEOUT, {trailing: true}));
     window.addEventListener(`popstate`, this.onUrlHashChengedHandler);
-
     this.onUrlHashChanged();
   }
 
@@ -40,15 +39,31 @@ export default class FullPageScroll {
   }
 
   onUrlHashChanged() {
+    const lastScreen = this.activeScreen
     const newIndex = Array.from(this.screenElements).findIndex((screen) => location.hash.slice(1) === screen.id);
     this.activeScreen = (newIndex < 0) ? 0 : newIndex;
-    this.changePageDisplay();
+    this.changePageDisplay(lastScreen);
   }
 
-  changePageDisplay() {
-    this.changeVisibilityDisplay();
-    this.changeActiveMenuItem();
+  changePageDisplay(lastScreen) {
+    this.changeActiveMenuItem();        
+    if(lastScreen === 1 && this.activeScreen === 2) {
+      this.transformPage();
+      setTimeout(()=> {
+        this.changeVisibilityDisplay();
+      }, 350)
+    } else {
+      this.changeVisibilityDisplay();
+    }
     this.emitChangeDisplayEvent();
+  }
+
+  transformPage() {
+    const page = document.querySelector('.page-content')
+    page.classList.add('transform')
+    setTimeout(() => {
+      page.classList.remove('transform')
+    }, 500);
   }
 
   changeVisibilityDisplay() {
