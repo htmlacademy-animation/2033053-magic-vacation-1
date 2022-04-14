@@ -3263,13 +3263,6 @@ body.loaded .page-header__toggler {
   }
 }
 
-* {
-  overflow: visible !important;
-}
-*::after, *::before {
-  overflow: visible !important;
-}
-
 @keyframes shift {
   to {
     transform: translateX(0%);
