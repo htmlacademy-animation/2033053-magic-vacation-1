@@ -208,10 +208,6 @@
     p {
       animation-delay: .15s;
     }
-
-    @media (max-width: $tablet) and (orientation: portrait) {
-      padding-top: 0.6rem;
-    }
   }
   
   &:nth-child(2) {
