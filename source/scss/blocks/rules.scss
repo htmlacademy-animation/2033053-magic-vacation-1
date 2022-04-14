@@ -284,13 +284,6 @@
   }
 }
 
-* {
-  &::after, &::before {
-    overflow: visible !important;
-  }
-  overflow: visible !important;
-}
-
 @keyframes shift {
   to {
     transform: translateX(0%);
