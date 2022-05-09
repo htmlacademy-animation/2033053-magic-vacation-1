@@ -148,6 +148,38 @@
   }
 
   &::before {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 4.5rem;
+    height: 4.5rem;
+    background-color: $c-purple;
+    border-radius: 50%;
+    transform: scale(0, 0);
+
+    color: rgba(255, 255, 255, 0);
+
+    animation-name: zoomIn;
+    animation-duration: .3s;
+    animation-delay: 0s;
+    animation-fill-mode: forwards;
+    animation-timing-function: cubic-bezier(.22,.81,.64,1.52);
+
+    @media (max-width: $tablet) and (orientation: portrait) {
+      top: 1rem;
+      width: 2.5rem;
+      height: 2.5rem;
+    }
+
+    @media (max-width: $mobile) and (orientation: landscape) {
+      top: 0.6rem;
+      width: 2.5rem;
+      height: 2.5rem;
+    }
+  }
+
+  &::after {
     content: counter(li);
     counter-increment: li;
     position: absolute;
@@ -158,19 +190,18 @@
     font-family: $font-alt;
     font-weight: 400;
     font-size: 2.4rem;
-    background-color: $c-purple;
     border-radius: 50%;
     line-height: 5rem;
     text-align: center;
-    transform: scale(0, 0);
+    opacity: 0;
 
-    color: rgba(255, 255, 255, 0);
+    color: rgba(255, 255, 255);
 
-    animation-name: zoom, show-text-white;
-    animation-duration: .3s, .3s;
-    animation-delay: 0s, .1s;
-    animation-fill-mode: forwards, forwards;
-    animation-timing-function: cubic-bezier(.22,.81,.64,1.52), linear;
+    animation-name: fadeIn;
+    animation-duration: .3s;
+    animation-delay: .1s;
+    animation-fill-mode: forwards;
+    animation-timing-function: ease;
 
     @media (max-width: $tablet) and (orientation: portrait) {
       top: 1rem;
@@ -211,8 +242,12 @@
   }
   
   &:nth-child(2) {
+    &::after {
+      animation-delay: .4s;
+    }
+
     &::before {
-      animation-delay: .3s, .4s;
+      animation-delay: .3s;
     }
 
     p {
@@ -223,8 +258,12 @@
   &:nth-child(3) {
     padding-top: 1rem;
 
+    &::after {
+      animation-delay: .7s;
+    }
+
     &::before {
-      animation-delay: .6s, .7s;
+      animation-delay: .6s;
     }
 
     p {
@@ -237,8 +276,12 @@
   }
   
   &:nth-child(4) {
+    &::after {
+      animation-delay: 1s;
+    }
+
     &::before {
-      animation-delay: .9s, 1s;
+      animation-delay: .9s;
     }
 
     p {
@@ -253,11 +296,10 @@
   right: 5.6rem;
   opacity: 0;
   width: 230px;
-  color: rgba(95, 69, 140, 0);
-  animation-name: show, stretch, show-text-purple;
-  animation-duration: .1s, .4s, .4s;
-  animation-fill-mode: forwards, none, forwards;
-  animation-delay: 1.05s, 1s, 1.2s;
+  animation-name: show, stretch;
+  animation-duration: .1s, .4s;
+  animation-fill-mode: forwards, none;
+  animation-delay: 1.05s, 1s;
   transition: width .4s;
 
   @media (min-width: $stop-scaling) {
@@ -280,7 +322,12 @@
   @media (max-width: $mobile) and (orientation: landscape) {
     bottom: 2rem;
     right: 1.5rem;
-    
+  }
+
+  span {
+    opacity: 0;
+    color: #5f458c;
+    animation: fadeIn .4s 1.2s ease forwards;
   }
 }
 
@@ -302,19 +349,13 @@
   }
 }
 
-@keyframes show-text-white {
+@keyframes fadeIn {
   to {
-    color: rgba(255, 255, 255, 1);
+    opacity: 1;
   }
 }
 
-@keyframes show-text-purple {
-  to {
-    color: rgba(95, 69, 140, 1);
-  }
-}
-
-@keyframes zoom {
+@keyframes zoomIn {
   to {
     transform: scale(1, 1);
   }
