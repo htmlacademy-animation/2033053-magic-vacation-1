@@ -1634,7 +1634,6 @@ img {
   box-sizing: content-box;
   display: inline-block;
   opacity: 0;
-  width: fit-content;
   max-width: unset;
 }
 .form--result .form__button span {
@@ -1647,6 +1646,8 @@ img {
 .form--result .form__field {
   transition: opacity 0.1s ease-out 0.35s, width 0.35s ease-out 0.4s;
   margin-left: auto;
+  width: 0;
+  opacity: 0;
 }
 .form--result .form__field::placeholder {
   opacity: 0;
