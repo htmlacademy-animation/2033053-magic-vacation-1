@@ -160,7 +160,6 @@
     box-sizing: content-box;
     display: inline-block;
     opacity: 0;
-    width: fit-content;
     max-width: unset;
     
     span {
@@ -176,6 +175,8 @@
   .form__field {
     transition: opacity .1s ease-out .35s, width .35s ease-out .4s;
     margin-left: auto;
+    width: 0;
+    opacity: 0;
 
     &::placeholder {
       opacity: 0;
@@ -194,9 +195,6 @@
     span {
       opacity: 1;
     }
-    // &.btn:before {
-    //   max-width: 235px;
-    // }
   }
 
   .form__field {
