@@ -1,3 +1,145 @@
+:root {
+  --fade-in-top: 39rem;
+  --zoom-up-top: 28.3rem;
+
+  --cubic-bezier-leaves: cubic-bezier(.79,1.15,.8,1.08);
+
+  @media (min-width: $stop-scaling) {
+    --fade-in-top: 39rem;
+  }
+
+  @media (max-width: $tablet) and (orientation: portrait) {
+    --fade-in-top: 20.5rem;
+    --zoom-up-top: 16.3rem;
+  }
+
+  @media (max-width: $tablet) and (orientation: landscape) {
+    --fade-in-top: 17.5rem;
+    --zoom-up-top: 14.3rem;
+  }
+
+  @media (max-width: $mobile) and (orientation: landscape) {
+    
+  }
+
+  @media (max-width: $mobile) and (orientation: portrait) {
+    --fade-in-top: 22.3rem;
+    --zoom-up-top: 19.5rem;
+  }
+}
+
+
+@keyframes rotateInDownLeft {
+  from {
+    opacity: 0;
+    transform: rotate(-25deg);
+  }
+
+  10% {
+    opacity: 1;
+  }
+
+  15% {
+    transform: rotate(9deg);
+  }
+
+  30% {
+    transform: rotate(-7deg);
+  }
+
+  45% {
+    transform: rotate(5deg);
+  }
+
+  60% {
+    transform: rotate(-3deg);
+  }
+
+  75% {
+    transform: rotate(2deg);
+  }
+
+  90%,
+  to {
+    opacity: 1;
+    transform: rotate(0deg);
+  }
+}
+
+@keyframes rotateInDownRight {
+  from {
+    opacity: 0;
+    transform: rotate(25deg);
+  }
+
+  10% {
+    opacity: 1;
+  }
+
+  15% {
+    transform: rotate(-9deg);
+  }
+
+  30% {
+    transform: rotate( 7deg);
+  }
+
+  45% {
+    transform: rotate(-5deg);
+  }
+
+  60% {
+    transform: rotate(3deg);
+  }
+
+  75% {
+    transform: rotate(-2deg);
+  }
+
+  90%,
+  to {
+    opacity: 1;
+    transform: rotate(0deg);
+  }
+}
+
+
+@keyframes fadeInUpBig {
+  from {
+    top: 80%;
+    opacity: 0;
+    transform: translateY(0%) rotate(-65deg);
+  }
+
+  to {
+    top: var(--fade-in-top);
+    opacity: 1;
+    transform: translateY(-4%) rotate(8deg);
+  }
+}
+
+@keyframes zoomInUp {
+  from {
+    transform: scale(0);
+    top: 80%;
+  }
+
+  to {
+    transform: scale(1);
+    top: var(--zoom-up-top);
+  }
+}
+
+@keyframes swing {
+  from {
+    transform: translateY(-4%) rotate(8deg);
+  }
+
+  to {
+    transform: translateY(4%) rotate(-3deg);
+  }
+}
+
 .result {
   flex-grow: 1;
   display: flex;
@@ -40,17 +182,139 @@
   }
 
   picture {
+    position: absolute;
     display: block;
-    width: 100%;
-    height: 100%;
+    // width: 100%;
+    // height: 100%;
   }
 
   img {
-    display: block;
-    width: 100%;
-    height: 100%;
+    position: absolute;
+    // display: block;
+    // width: 100%;
+    // height: 100%;
     object-fit: cover;
     object-position: center;
+  }
+
+  .flamingo {
+    opacity: 0;
+    z-index: 4;
+    width: 21%;
+    left: 31.5%;
+    top: 100%;
+    transform-origin: center;
+    animation: fadeInUpBig .5s 0s ease-out forwards, swing .8s .7s ease-in-out infinite alternate;
+
+    @media (max-width: $tablet) and (orientation: landscape) {
+      top: 38.5rem;
+    }
+
+    @media (max-width: $tablet) and (orientation: portrait) {
+      width: 25.5%;
+      left: 27%;
+    }
+
+    @media (max-width: $mobile) and (orientation: portrait) {
+      width: 30%;
+      left: 22.5%;
+    }
+  }
+
+  .suitcase  {
+    width: 28%;
+    z-index: 3;
+    top: 50rem;
+    left: 33.5%;
+    transform: scale(0);
+    animation: zoomInUp .5s 0s cubic-bezier(.59,1.6,.76,1) forwards;
+
+    @media (max-width: $tablet) and (orientation: portrait) {
+      width: 37%;
+      top: 22.4rem;
+      left: 28.5%;
+    }
+
+    @media (max-width: $mobile) and (orientation: portrait) {
+      width: 40%;
+      left: 25.5%;
+    }
+  }
+
+  .leaf-green {
+    opacity: 0;
+    z-index: 2;
+    width: 25%;
+    top: 43.7rem;
+    left: 50%;
+    transform-origin: left center;
+    animation: rotateInDownLeft 1.5s .45s var(--cubic-bezier-leaves) forwards;
+
+    @media (max-width: $tablet) and (orientation: landscape) {
+      top: 19.5rem;
+      left: 49%;
+    }
+
+    @media (max-width: $tablet) and (orientation: portrait) {
+      width: 39%;
+      top: 22.4rem;
+      left: 48%;
+    }
+
+    @media (max-width: $mobile) and (orientation: portrait) {
+      width: 34%;
+      top: 25.6rem;
+    }
+  }
+
+  .leaf-blue-right {
+    opacity: 0;
+    animation: rotateInDownLeft 1.5s .28s var(--cubic-bezier-leaves) forwards;
+    z-index: 1;
+    width: 21%;
+    left: 50%;
+    top: 28.7rem;
+    transform-origin: left center;
+    @media (max-width: $tablet) and (orientation: landscape) {
+      top: 15rem;
+    }
+
+    @media (max-width: $tablet) and (orientation: portrait) {
+      width: 31%;
+      top: 16.7rem;
+    }
+
+    @media (max-width: $mobile) and (orientation: portrait) {
+      width: 33%;
+      top: 20rem;
+    }
+
+  }
+
+  .leaf-blue-left {
+    opacity: 0;
+    animation: rotateInDownRight 1.5s .35s var(--cubic-bezier-leaves) forwards;    
+    z-index: 1;
+    width: 20%;
+    left: 25%;
+    top: 41rem;
+    transform-origin: right center;
+
+    @media (max-width: $tablet) and (orientation: landscape) {
+      top: 18.5rem;
+    }
+
+    @media (max-width: $tablet) and (orientation: portrait) {
+      width: 29%;
+      top: 21rem;
+      left: 15%;
+    }
+
+    @media (max-width: $mobile) and (orientation: portrait) {
+      width: 31%;
+      left: 15%;
+      top: 25rem;
+    }
   }
 }
 
