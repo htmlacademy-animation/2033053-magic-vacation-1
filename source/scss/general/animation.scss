@@ -10,6 +10,31 @@
     }
 }
 
+@keyframes fadeIn {
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes fadeOut {
+    to {
+        opacity: 0;
+    }
+}
+
+  
+@keyframes stretch {
+    from {
+        width: 0;
+    }
+}
+
+@keyframes zoomIn {
+    to {
+        transform: scale(1, 1);
+    }
+}
+
 .animation-text {
     max-height: 12rem;
     .word {

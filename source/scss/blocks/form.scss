@@ -1,3 +1,28 @@
+:root {
+  --width-input-result: calc(100% - 31rem);
+  --padding-input-result: 0 5.6rem;
+  
+
+  @media (min-width: $stop-scaling) {
+    --width-input-result: calc(100% - 310px);
+    --padding-input-result: 0 56px;
+  }
+
+  @media (orientation: portrait) {
+    --width-input-result: calc(100% - 5rem);
+    --padding-input-result: 0 2.5rem;
+  }
+
+  @media (max-width: $tablet) and (orientation: landscape) {
+    --width-input-result: calc(100% - 9rem);
+  }
+
+  @media (max-width: $mobile) and (orientation: landscape) {
+    --width-input-result: calc(100% - 5rem);
+    --padding-input-result: 0 2.5rem;
+  }
+}
+
 .form {
   position: relative;
   display: flex;
@@ -128,23 +153,33 @@
 }
 
 .form--result {
+  display: flex;
+  justify-content: flex-end;
+  .form__button {
+    transition: opacity .2s ease-out .25s;
+    box-sizing: content-box;
+    display: inline-block;
+    opacity: 0;
+    width: fit-content;
+    max-width: unset;
+    
+    span {
+      transition: opacity .1s ease-out .35s;
+      opacity: 0;
+    }
+    
+    &.btn:before {
+      max-width: unset;
+    }
+  }
+
   .form__field {
-    width: calc(100% - 31rem);
+    transition: opacity .1s ease-out .35s, width .35s ease-out .4s;
+    margin-left: auto;
 
-    @media (min-width: $stop-scaling) {
-      width: calc(100% - 310px);
-    }
-
-    @media (orientation: portrait) {
-      width: calc(100% - 5rem);
-    }
-
-    @media (max-width: $tablet) and (orientation: landscape) {
-      width: calc(100% - 9rem);
-    }
-
-    @media (max-width: $mobile) and (orientation: landscape) {
-      width: calc(100% - 5rem);
+    &::placeholder {
+      opacity: 0;
+      transition: opacity .2s ease-out .55s;
     }
   }
 }
@@ -154,14 +189,19 @@
   
   .form__button {
     max-width: 235px;
-    &.btn:before {
-      max-width: 235px;
+    opacity: 1;
+
+    span {
+      opacity: 1;
     }
+    // &.btn:before {
+    //   max-width: 235px;
+    // }
   }
 
   .form__field {
     opacity: 1;
-    width: calc(100% - 21rem);
+    width: calc(100% - 31rem);
     padding: 0 5.6rem;
 
     @media (min-width: $stop-scaling) {
@@ -181,6 +221,10 @@
     @media (max-width: $mobile) and (orientation: landscape) {
       padding: 0 2.5rem;
       width: calc(100% - 5rem);
+    }
+
+    &::placeholder {
+      opacity: 1;
     }
   }
 }

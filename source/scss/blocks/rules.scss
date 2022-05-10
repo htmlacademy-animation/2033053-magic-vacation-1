@@ -224,7 +224,7 @@
     margin: 0;
     transform: translateX(15%);
     opacity: 0;
-    animation-name: shift, show;
+    animation-name: shift, fadeIn;
     animation-duration: .3s, .3s;
     animation-timing-function: ease-out, linear;
     animation-fill-mode: forwards, forwards;
@@ -296,7 +296,7 @@
   right: 5.6rem;
   opacity: 0;
   width: 230px;
-  animation-name: show, stretch;
+  animation-name: fadeIn, stretch;
   animation-duration: .1s, .4s;
   animation-fill-mode: forwards, none;
   animation-delay: 1.05s, 1s;
@@ -334,29 +334,5 @@
 @keyframes shift {
   to {
     transform: translateX(0%);
-  }
-}
-
-@keyframes stretch {
-  from {
-    width: 0;
-  }
-}
-
-@keyframes show {
-  to {
-    opacity: 1;
-  }
-}
-
-@keyframes fadeIn {
-  to {
-    opacity: 1;
-  }
-}
-
-@keyframes zoomIn {
-  to {
-    transform: scale(1, 1);
   }
 }
