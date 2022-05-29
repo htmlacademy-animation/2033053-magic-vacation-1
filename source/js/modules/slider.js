@@ -4,6 +4,7 @@ export default () => {
   let storySlider;
   let sliderContainer = document.getElementById(`story`);
   sliderContainer.style.backgroundImage = `url("img/slide1.jpg"), linear-gradient(180deg, rgba(83, 65, 118, 0) 0%, #523E75 16.85%)`;
+  const navMenu = document.querySelector('.page-header__nav')
 
   const setSlider = function () {
     if (((window.innerWidth / window.innerHeight) < 1) || window.innerWidth < 769) {
@@ -60,6 +61,11 @@ export default () => {
             } else if (storySlider.activeIndex === 6) {
               sliderContainer.style.backgroundImage = `url("img/slide4.jpg")`;
             }
+            // if (storySlider.activeIndex !== 5 && storySlider.activeIndex !== 6) {
+              navMenu.dataset.slide = storySlider.activeIndex
+            // } else {
+            //   navMenu.dataset.slide = - 1
+            // }
           },
           resize: () => {
             storySlider.update();

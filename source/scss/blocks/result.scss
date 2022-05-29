@@ -368,6 +368,12 @@
 }
 
 .result__button {
+  opacity: 0;
+  animation: fadeIn .5s ease-out 0s forwards;
+
+  span {
+    animation: rollInRight .5s ease-out 0s forwards;
+  }
   @include btn-reset;
   display: flex;
   align-items: center;

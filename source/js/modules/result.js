@@ -13,9 +13,7 @@ export default () => {
           return el.getAttribute(`id`) === target;
         });
         targetEl[0].classList.add(`screen--show`);
-        
         targetEl[0].classList.remove(`screen--hidden`);
-        setTimeout(() => targetEl[0].classList.add(`active`), 0)
       });
     }
 

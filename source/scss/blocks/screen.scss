@@ -75,10 +75,16 @@
 .screen__footer-wrapper {
   @include container;
 
+  transition: opacity .05s ease 0s;
+  .screen__footer--full & {
+    transition: opacity .3s ease .15s;
+    opacity: 1;
+  }
   @media (max-width: $tablet) and (orientation: portrait) {
     opacity: 0;
-
+    transition: opacity .05s ease 0s;
     .screen__footer--full & {
+      transition: opacity .3s ease .15s;
       opacity: 1;
     }
   }

@@ -1,4 +1,6 @@
 import throttle from 'lodash/throttle';
+import animation from './animation';
+
 
 export default class FullPageScroll {
   constructor() {
@@ -82,7 +84,23 @@ export default class FullPageScroll {
     if (activeItem) {
       this.menuElements.forEach((item) => item.classList.remove(`active`));
       activeItem.classList.add(`active`);
+      document.querySelector('body').dataset.activeScreen = activeItem.dataset.href
+      if (activeItem.dataset.href === 'story' && !document.querySelector('.page-header__nav').dataset.slide) {
+        document.querySelector('.page-header__nav').dataset.slide = 0
+      }
     }
+
+    // switch (activeItem.dataset.href) {
+    //   case 'story':
+    //     animation(document.querySelector('.slider__item-title'), {
+    //       name: 'fadeInUp',
+    //       delay: 500,
+    //       duration: 600
+    //     });
+    //     break
+    //   default:
+    //     console.log('def');
+    // }
   }
 
   emitChangeDisplayEvent() {
