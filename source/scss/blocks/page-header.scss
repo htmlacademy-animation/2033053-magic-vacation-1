@@ -176,6 +176,145 @@
   }
 }
 
+body[data-active-screen="story"] {
+  .page-header__nav[data-slide="0"],
+  .page-header__nav[data-slide="1"] {
+    .page-header__menu{
+      a {
+        &:hover{
+          color: #5F458C;
+        }
+
+        &::after {
+          background: #5F458C;
+        }
+      }
+    }
+
+    .social-block__toggler {
+      color: #A67EE5;
+      &:hover {
+        color: #5F458C;
+      }
+      
+      &:focus {
+        color: #5F458C;
+        &::before {
+          border: 1px solid #5F458C;
+        }
+      }
+      
+      &:active {
+        color: #fff;
+        &::before {
+          border: 1px solid #5F458C;
+          background: #5F458C ;
+        }
+      }
+
+      & + .social-block__list {
+        .social-block__link{
+          &:hover {
+            color: #5F458C;
+          }
+        }
+      }
+    }
+  }
+
+  .page-header__nav[data-slide="2"],
+  .page-header__nav[data-slide="3"] {
+    .page-header__menu{
+      a {
+        &:hover{
+          color: #A0CEFF;
+        }
+
+        &::after {
+          background: #A0CEFF;
+        }
+      }
+    }
+
+    .social-block__toggler {
+      color: #3E72EE;
+      &:hover {
+        color: #A0CEFF;
+      }
+      
+      &:focus {
+        color: #A0CEFF;
+        &::before {
+          border: 1px solid #A0CEFF;
+        }
+      }
+      
+      &:active {
+        color: #fff;
+        border: none;
+        &::before {
+          border: none;
+          background: #A0CEFF ;
+        }
+      }
+
+      & + .social-block__list {
+        .social-block__link{
+          &:hover {
+            color: #A0CEFF;
+          }
+        }
+      }
+    }
+  }
+  
+  .page-header__nav[data-slide="4"],
+  .page-header__nav[data-slide="5"] {
+    .page-header__menu{
+      a {
+        &:hover{
+          color: #3E72EE;
+        }
+
+        &::after {
+          background: #3E72EE;
+        }
+      }
+    }
+
+    .social-block__toggler {
+      color: #A7D4FF;
+      &:hover {
+        color: #3E72EE;
+      }
+      
+      &:focus {
+        color: #3E72EE;
+        &::before {
+          border: 1px solid #3E72EE;
+        }
+      }
+      
+      &:active {
+        color: #fff;
+        border: none;
+        &::before {
+          border: none;
+          background: #3E72EE ;
+        }
+      }
+
+      & + .social-block__list {
+        .social-block__link{
+          &:hover {
+            color: #3E72EE;
+          }
+        }
+      }
+    }
+  }
+}
+
 .page-header__menu {
   font-family: $font-alt;
   text-transform: uppercase;

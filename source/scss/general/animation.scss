@@ -35,8 +35,44 @@
     }
 }
 
+
+@keyframes rollInRight {
+    from {
+        transform: translateX(150%) rotate(0deg);
+        opacity: 0;
+    }
+
+    70% {
+        opacity: 1;
+    }
+
+    to {
+        opacity: 1;
+        transform: translateX(0%) rotate(-360deg);
+    }
+}
+  
+
+@keyframes rollInLeft {
+    from {
+        transform: translateX(-150%) rotate(0deg);
+        opacity: 0;
+    }
+
+    70% {
+        opacity: 1;
+    }
+
+    to {
+        opacity: 1;
+        transform: translateX(0%) rotate(360deg);
+    }
+}
+  
+
 .animation-text {
     max-height: 12rem;
+    display: flex;
     .word {
         overflow: hidden;
         display: flex;

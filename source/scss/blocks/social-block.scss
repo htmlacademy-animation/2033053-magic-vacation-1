@@ -258,6 +258,6 @@
 body.loaded {
   .social-block__toggler {
     transform: scale(1);
-    transition: .35s cubic-bezier(.32,.87,.35,1.5) .25s;
+    transition: transform .35s cubic-bezier(.32,.87,.35,1.5) .25s, color .35s ease 0s;
   }
 }

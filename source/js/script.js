@@ -19,12 +19,15 @@ chat();
 result();
 form();
 social();
-animation(document.querySelector('.intro__title'), {
-    name: 'fadeInUp',
-    printingOrder: [[[4,2,1,2,3,2,1,5,3,1,3,1]], [[4,5,3,1,4,1]]],
-    delay: 500,
-    duration: 600
-});
+
+let arrAnimationEl = document.querySelectorAll('h2:not(.result__title), h1, .intro__date')
+arrAnimationEl.forEach(el => {
+    animation(el, {
+        name: 'fadeInUp',
+        delay: 500,
+        duration: 600
+    });
+})
 
 const fullPageScroll = new FullPageScroll();
 fullPageScroll.init();
