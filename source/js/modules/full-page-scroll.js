@@ -90,17 +90,22 @@ export default class FullPageScroll {
       }
     }
 
-    // switch (activeItem.dataset.href) {
-    //   case 'story':
-    //     animation(document.querySelector('.slider__item-title'), {
-    //       name: 'fadeInUp',
-    //       delay: 500,
-    //       duration: 600
-    //     });
-    //     break
-    //   default:
-    //     console.log('def');
-    // }
+    switch (activeItem.dataset.href) {
+      case 'prizes':
+        const animationElement = document.querySelector('animate');
+        setTimeout(() => {
+          console.log('change', animationElement)
+          animationElement.beginElement();
+          // window.addEventListener('mySpecialEvent', function() {
+          // }, false);
+        }, 600)
+        setTimeout(() => {
+          document.querySelector('.prizes__item--journeys').classList.add('animation-finish')
+        }, 3150)
+        break
+      default:
+        console.log('def');
+    }
   }
 
   emitChangeDisplayEvent() {
