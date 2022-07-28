@@ -1,3 +1,22 @@
+@keyframes fadeInRight {
+  75% {
+    transform: translate(0, 0);
+  }
+  to {
+    opacity: 1;
+    transform: translate(0, 0);
+  }
+}
+@keyframes fadeOutUp {
+  75% {
+    opacity: 0;
+  }
+  to {
+    opacity: 0;
+    transform: translate(0, -25%);
+  }
+}
+
 .prizes {
   flex-grow: 1;
   display: flex;
@@ -127,6 +146,7 @@
   }
 
   &--journeys {
+    opacity: 1;
     transition: transform .55s;
     transform: translateX(120%);
     position: relative;
@@ -172,6 +192,8 @@
   &--cases {
     opacity: 0;
     margin-left: 7rem;
+    transform: translateX(-50%);
+    animation: fadeInRight 0.8s ease 3.2s forwards;
 
     @media (min-width: $stop-scaling) {
       margin-left: 70px;
@@ -250,7 +272,6 @@
   margin: 5.6rem 0 0 0;
   font-size: 1.8rem;
   line-height: 1.1;
-  // opacity: 0;
 
   @media (min-width: $stop-scaling) {
     margin-top: 56px;
