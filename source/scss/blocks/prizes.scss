@@ -17,30 +17,6 @@
   }
 }
 
-@keyframes zoomInFly {
-  from {
-    // transform: scale(0.1) rotate(27deg) translate(-731px, -1114px);
-    transform: scale(0.3) rotate(-17deg) translate(-396px, -592px);
-  }
-
-  20% {
-    // transform: scale(0.3) rotate(-17deg) translate(-195px, -554px);
-  }
-  
-  // 35% {
-  //   transform: scale(0.6) rotate(-27deg) translate(-148px, -216px);
-  // }
-  // 50% {
-  //   transform: scale(0.4) rotate(335deg) translate(-329px, -318px);
-  // }
-  // 40% {
-  //   transform: scale(.4);
-  // }
-  to {
-    transform: scale(0.65) rotate(17deg) translate(-31px, -27px);
-  }
-}
-
 .prizes {
   flex-grow: 1;
   display: flex;
@@ -170,7 +146,7 @@
   }
 
   &--journeys {
-    opacity: 0;
+    opacity: 1;
     transition: transform .55s;
     transform: translateX(120%);
     position: relative;
@@ -214,30 +190,10 @@
   }
 
   &--cases {
-    opacity: 1;
+    opacity: 0;
     margin-left: 7rem;
-
-    #casesClouds {
-      // #casesCloudLeft {
-      //   opacity: 0;
-      //   transform: translate(50%);
-      //   animation: fadeInRight 2s forwards ease-out, fadeOutUp 1s 2s forwards ease-in;
-      // }
-      // #casesCloudsRight {
-      //   opacity: 0;
-      //   transform: translate(100%);
-      //   animation: fadeInRight 2s forwards ease-out, fadeOutUp 1s 2s forwards cubic-bezier(.37,.26,.54,.51);
-      // }
-      // animation: fadeInRight 1s forwards, fadeOutUp 1s 1s forwards;
-      // animation-play-state: paused;
-    }
-    #casesCaseParachute {
-      // animation: zoomInFly 1s forwards;
-      transform-box: fill-box;
-      transform-origin: center center;
-      // transform: scale(0.65) rotate(17deg) translate(-31px, -27px);
-      // opacity: 0;
-    }
+    transform: translateX(-50%);
+    animation: fadeInRight 0.8s ease 3.2s forwards;
 
     @media (min-width: $stop-scaling) {
       margin-left: 70px;
@@ -316,7 +272,6 @@
   margin: 5.6rem 0 0 0;
   font-size: 1.8rem;
   line-height: 1.1;
-  // opacity: 0;
 
   @media (min-width: $stop-scaling) {
     margin-top: 56px;
