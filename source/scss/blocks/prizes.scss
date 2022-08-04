@@ -228,6 +228,8 @@
 
   &--codes {
     opacity: 0;
+    transform: translateX(30%);
+    animation: fadeInRight 0.6s ease 4.4s forwards;
     @media (max-width: $tablet) and (orientation: portrait) {
       padding-left: 0.8rem;
     }
