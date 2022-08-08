@@ -5,6 +5,8 @@ export default () => {
     for (let i = 0; i < showResultEls.length; i++) {
       showResultEls[i].addEventListener(`click`, function () {
         let target = showResultEls[i].getAttribute(`data-target`);
+        const svgLose = document.querySelector('#fallAnimate');
+        setTimeout(() => svgLose.beginElement(), 100);
         [].slice.call(results).forEach(function (el) {
           el.classList.remove(`screen--show`);
           el.classList.add(`screen--hidden`);
