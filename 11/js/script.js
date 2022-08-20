@@ -10614,7 +10614,6 @@ class FullPageScroll {
       case 'prizes':
         const animationElement = document.querySelector('animate');
         setTimeout(() => {
-          console.log('change', animationElement)
           animationElement.beginElement();
           // window.addEventListener('mySpecialEvent', function() {
             // }, false);
@@ -10624,7 +10623,7 @@ class FullPageScroll {
         }, 3150)
         break
       case 'game':
-        this.timer(5);
+        this.timer(300);
         break
       default:
         console.log('def');
