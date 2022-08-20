@@ -1,3 +1,14 @@
+@keyframes zoom {
+  to{
+    transform: scale(1) translateY(-30%);
+  }
+}
+
+.svg-win {
+  transform: scale(1.2) translateY(-25%);
+  animation: zoom .5s ease-out forwards;
+}
+
 .game {
   flex-grow: 1;
   display: flex;

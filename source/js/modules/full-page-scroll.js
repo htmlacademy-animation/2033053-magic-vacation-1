@@ -1,12 +1,13 @@
 import throttle from 'lodash/throttle';
-import animation from './animation';
-
+// import setTimer from './setTimer'
 
 export default class FullPageScroll {
   constructor() {
     this.THROTTLE_TIMEOUT = 1000;
     this.scrollFlag = true;
     this.timeout = null;
+    this.startTime = null;
+    this.timerStartFlag = false;
 
     this.screenElements = document.querySelectorAll(`.screen:not(.screen--result)`);
     this.menuElements = document.querySelectorAll(`.page-header__menu .js-menu-link`);
@@ -68,6 +69,41 @@ export default class FullPageScroll {
     }, 500);
   }
 
+  timer(secondFromEnd) {
+    const tick = () => {
+      const tack = (timePassed) => {
+        if(!this.timerStartFlag) {
+          this.startTime = timePassed
+          this.timerStartFlag = true
+        } else {
+          const timerMinutesElem = document.querySelector('.game__counter span:first-child')
+          const timerSecondElem = document.querySelector('.game__counter span:last-child')
+          const remainingTime = secondFromEnd * 1000 - Math.round(timePassed - this.startTime)
+          if(remainingTime > 100) {
+            timerMinutesElem.textContent = 
+              Math.floor(remainingTime / (60 * 1000)) < 10
+                ? `0${Math.floor(remainingTime / (60 * 1000))}`
+                : `${Math.floor(remainingTime / (60 * 1000))}`
+        
+            timerSecondElem.textContent =
+              Math.floor(remainingTime % (60 * 1000)) / 1000 < 10
+                ? `0${Math.floor(Math.floor(remainingTime % (60 * 1000)) / 1000)}`
+                : `${Math.floor(Math.floor(remainingTime % (60 * 1000)) / 1000)}`
+          }
+        }
+      }
+      requestAnimationFrame(tack);
+      const start = Math.round(performance.now() - this.startTime + 100)
+  
+      if(start <= secondFromEnd * 1000) {
+        requestAnimationFrame(tick);
+      } else {
+        console.log('time out')
+      }
+    }
+    tick()
+  }
+
   changeVisibilityDisplay() {
     this.screenElements.forEach((screen) => {
       screen.classList.add(`screen--hidden`);
@@ -89,19 +125,21 @@ export default class FullPageScroll {
         document.querySelector('.page-header__nav').dataset.slide = 0
       }
     }
-
+    console.log('activeItem.dataset.href', activeItem.dataset.href)
     switch (activeItem.dataset.href) {
       case 'prizes':
         const animationElement = document.querySelector('animate');
         setTimeout(() => {
-          console.log('change', animationElement)
           animationElement.beginElement();
           // window.addEventListener('mySpecialEvent', function() {
-          // }, false);
-        }, 600)
+            // }, false);
+          }, 600)
         setTimeout(() => {
           document.querySelector('.prizes__item--journeys').classList.add('animation-finish')
         }, 3150)
+        break
+      case 'game':
+        this.timer(300);
         break
       default:
         console.log('def');
