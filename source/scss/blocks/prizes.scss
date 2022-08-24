@@ -17,6 +17,11 @@
   }
 }
 
+.show {
+  opacity: 1 !important;
+  transform: translateX(0%) !important;
+}
+
 .prizes {
   flex-grow: 1;
   display: flex;
@@ -146,7 +151,6 @@
   }
 
   &--journeys {
-    opacity: 1;
     transition: transform .55s;
     transform: translateX(120%);
     position: relative;
@@ -154,6 +158,13 @@
     &.animation-finish {
       transform: translateX(0);
     }
+
+    .prizes__desc {
+      span {
+        margin-left: 7.4rem;
+      }
+    }
+
     .prizes__icon {
       position: relative;
       left: -5.9rem;
@@ -195,6 +206,12 @@
     transform: translateX(-50%);
     animation: fadeInRight 0.8s ease 3.2s forwards;
 
+    .prizes__desc {
+      span {
+        margin-left: 6rem;
+      }
+    }
+
     @media (min-width: $stop-scaling) {
       margin-left: 70px;
     }
@@ -232,6 +249,12 @@
     animation: fadeInRight 0.6s ease 4.4s forwards;
     @media (max-width: $tablet) and (orientation: portrait) {
       padding-left: 0.8rem;
+    }
+
+    .prizes__desc {
+      span {
+        margin-left: 19.5rem;
+      }
     }
 
     .prizes__icon {
@@ -274,6 +297,19 @@
   margin: 5.6rem 0 0 0;
   font-size: 1.8rem;
   line-height: 1.1;
+
+  b {
+    position: absolute;
+    transition: all 1s ease-out;
+    opacity: 0;
+  }
+  
+  span {
+    transition: all 1s ease-out .3s;
+    transform: translateX(20%);
+    opacity: 0;
+  }
+
 
   @media (min-width: $stop-scaling) {
     margin-top: 56px;
