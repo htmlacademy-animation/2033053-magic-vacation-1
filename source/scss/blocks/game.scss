@@ -82,13 +82,23 @@
 }
 
 .game__counter {
+  text-align: left;
   margin: 0;
+  display: flex;
   text-transform: uppercase;
   font-family: $font-alt;
   font-weight: 400;
   font-size: 4.8rem;
   line-height: 0.906;
   letter-spacing: 0;
+
+  span {
+    width: 5rem;
+
+    &:first-of-type {
+      text-align: right;
+    } 
+  }
 
   @media (min-width: $stop-scaling) {
     font-size: 48px;

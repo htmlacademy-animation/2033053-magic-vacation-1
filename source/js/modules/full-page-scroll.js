@@ -70,16 +70,17 @@ export default class FullPageScroll {
   }
 
   timer(secondFromEnd) {
+    let prevSecond = null
     const tick = () => {
       const tack = (timePassed) => {
         if(!this.timerStartFlag) {
           this.startTime = timePassed
           this.timerStartFlag = true
         } else {
-          const timerMinutesElem = document.querySelector('.game__counter span:first-child')
-          const timerSecondElem = document.querySelector('.game__counter span:last-child')
           const remainingTime = secondFromEnd * 1000 - Math.round(timePassed - this.startTime)
-          if(remainingTime > 100) {
+          if(remainingTime > 100 && prevSecond !== Math.floor((timePassed - this.startTime) / 1000)) {
+            const timerMinutesElem = document.querySelector('.game__counter span:first-child')
+            const timerSecondElem = document.querySelector('.game__counter span:last-child')
             timerMinutesElem.textContent = 
               Math.floor(remainingTime / (60 * 1000)) < 10
                 ? `0${Math.floor(remainingTime / (60 * 1000))}`
@@ -89,6 +90,7 @@ export default class FullPageScroll {
               Math.floor(remainingTime % (60 * 1000)) / 1000 < 10
                 ? `0${Math.floor(Math.floor(remainingTime % (60 * 1000)) / 1000)}`
                 : `${Math.floor(Math.floor(remainingTime % (60 * 1000)) / 1000)}`
+            prevSecond = Math.floor((timePassed - this.startTime) / 1000)
           }
         }
       }
