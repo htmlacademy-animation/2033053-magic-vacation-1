@@ -106,25 +106,24 @@ export default class FullPageScroll {
     tick()
   }
 
-  counter(elem, countStart = 0, countEnd = 99, countStep = 1, frame = 12) {
+  counter(elem, options = {countStart: 0, countEnd: 99, countStep: 1, frame: 12}) {
+    const {countStart, countEnd, countStep, frame} = options
     let countCurrent = countStart
-    let startCounter = Date.now()
-    const wrapper = () => {
-      const itter = (timePassed) => {
-        if(Date.now() - startCounter >= Math.round(1000 / frame)) {
-          elem.textContent = `${countCurrent}`
-          countCurrent += countStep
-          startCounter = Date.now()
-        }
+    let startCounter = Date.now();
+
+    (function loop() {
+      if(Date.now() - startCounter >= Math.round(1000 / frame)) {
+        elem.textContent = `${countCurrent}`
+        countCurrent += countStep
+        startCounter = Date.now()
       }
-      requestAnimationFrame(itter)
+
       if(countCurrent <= countEnd) {
-        requestAnimationFrame(wrapper)
+        requestAnimationFrame(loop)
       } else {
         elem.textContent = `${countEnd}`
       }
-    }
-    wrapper()
+    })()
   }
 
   changeVisibilityDisplay() {
@@ -163,20 +162,28 @@ export default class FullPageScroll {
             setTimeout(() => {
               prizeCases.querySelector('.prizes__desc > span').classList.add('show')
               prizeCases.querySelector('.prizes__desc b').classList.add('show')
-              this.counter(prizeCases.querySelector('.prizes__desc > b'), 1, 7, 1, 12)
+              this.counter(prizeCases.querySelector('.prizes__desc > b'),
+              {
+                countStart: 1,
+                countEnd: 7,
+                countStep: 1,
+                frame: 12
+              })
               prizeCases.querySelector('.prizes__desc > b').style.maxWidth = 'unset'
               setTimeout(() => {
                 prizeCodes.querySelector('.prizes__desc > span:not(.count-wrapper)').classList.add('show')
                 prizeCodes.querySelector('.prizes__desc b').classList.add('show')
-                this.counter(prizeCodes.querySelector('.prizes__desc > b'), 11, 900, Math.floor((Math.random() + 5) * 21), 12)
+                this.counter(prizeCodes.querySelector('.prizes__desc > b'), 
+                  {
+                    countStart: 11,
+                    countEnd: 900,
+                    countStep: Math.floor((Math.random() + 5) * 21),
+                    frame: 12
+                  })
               }, 1000)
             }, 1000)
           }, 2400)
-          
-          
-          // window.addEventListener('mySpecialEvent', function() {
-            // }, false);
-          }, 600)
+        }, 600)
         setTimeout(() => {
           document.querySelector('.prizes__item--journeys').classList.add('animation-finish')
         }, 3150)
