@@ -106,6 +106,26 @@ export default class FullPageScroll {
     tick()
   }
 
+  counter(elem, options = {countStart: 0, countEnd: 99, countStep: 1, frame: 12}) {
+    const {countStart, countEnd, countStep, frame} = options
+    let countCurrent = countStart
+    let startCounter = Date.now();
+
+    (function loop() {
+      if(Date.now() - startCounter >= Math.round(1000 / frame)) {
+        elem.textContent = `${countCurrent}`
+        countCurrent += countStep
+        startCounter = Date.now()
+      }
+
+      if(countCurrent <= countEnd) {
+        requestAnimationFrame(loop)
+      } else {
+        elem.textContent = `${countEnd}`
+      }
+    })()
+  }
+
   changeVisibilityDisplay() {
     this.screenElements.forEach((screen) => {
       screen.classList.add(`screen--hidden`);
@@ -131,11 +151,39 @@ export default class FullPageScroll {
     switch (activeItem.dataset.href) {
       case 'prizes':
         const animationElement = document.querySelector('animate');
+        const prizeJourneys = document.querySelector('.prizes__item--journeys')
+        const prizeCases = document.querySelector('.prizes__item--cases')
+        const prizeCodes = document.querySelector('.prizes__item--codes')
         setTimeout(() => {
           animationElement.beginElement();
-          // window.addEventListener('mySpecialEvent', function() {
-            // }, false);
-          }, 600)
+          setTimeout(() => {
+            prizeJourneys.querySelector('.prizes__desc > span').classList.add('show')
+            prizeJourneys.querySelector('.prizes__desc > b').classList.add('show')
+            setTimeout(() => {
+              prizeCases.querySelector('.prizes__desc > span').classList.add('show')
+              prizeCases.querySelector('.prizes__desc b').classList.add('show')
+              this.counter(prizeCases.querySelector('.prizes__desc > b'),
+              {
+                countStart: 1,
+                countEnd: 7,
+                countStep: 1,
+                frame: 12
+              })
+              prizeCases.querySelector('.prizes__desc > b').style.maxWidth = 'unset'
+              setTimeout(() => {
+                prizeCodes.querySelector('.prizes__desc > span:not(.count-wrapper)').classList.add('show')
+                prizeCodes.querySelector('.prizes__desc b').classList.add('show')
+                this.counter(prizeCodes.querySelector('.prizes__desc > b'), 
+                  {
+                    countStart: 11,
+                    countEnd: 900,
+                    countStep: Math.floor((Math.random() + 5) * 21),
+                    frame: 12
+                  })
+              }, 1000)
+            }, 1000)
+          }, 2400)
+        }, 600)
         setTimeout(() => {
           document.querySelector('.prizes__item--journeys').classList.add('animation-finish')
         }, 3150)
